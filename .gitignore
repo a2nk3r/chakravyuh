@@ -2,4 +2,3 @@ node_modules
 node_modules/*
 public/images
 public/images/*
-package-lock.json
