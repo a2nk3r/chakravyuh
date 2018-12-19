@@ -4,17 +4,19 @@
   "description": "Chakravyuh Game Show redesigned",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "nodemon app.js"
   },
   "author": "AmanKumar",
   "license": "ISC",
   "dependencies": {
     "bootstrap": "^4.1.3",
+    "ejs": "^2.6.1",
     "express": "^4.16.4",
     "jquery": "^3.3.1",
     "mongoose": "^5.4.0",
+    "nodemon": "^1.18.9",
     "popper": "^1.0.1",
+    "typed.js": "^2.0.9",
     "validator": "^10.9.0"
   }
 }
