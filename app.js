@@ -1,5 +1,6 @@
 let express = require("express");
 
+// rounds array (test only)
 const rounds = ["round1", "round2", "round3", "round4", "round5"];
 
 let app = express();
@@ -23,7 +24,6 @@ app.get("/carousel", (req, res) => {
 
 app.get("/round:round", (req, res) => {
   let round = req.params.round;
-
   res.render("round" + round, { rounds: rounds, round: round });
 });
 
