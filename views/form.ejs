@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ./head %>
+    <title>Document</title>
+  </head>
+  <body>
+    <header><%- include ./header %></header>
+    <div class="container form-row align-items-center ml-5 mt-2">
+      <form action="/add_data/form_post" method="post">
+        <div class="form-row">
+          <div class="col-auto my-1 form-group col-md-6">
+            <label class="mr-sm-2" for="inlineFormCustomSelect">Round</label>
+            <select
+              class="custom-select mr-sm-2"
+              id="inlineFormCustomSelect"
+              name="round"
+            >
+              <option selected>Choose...</option>
+              <option value="1">Round 1</option>
+              <option value="2">Round 2</option>
+              <option value="3">Round 3</option>
+              <option value="4">Round 4</option>
+              <option value="5">Round 5</option>
+            </select>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="qno">Question No.: </label>
+            <input
+              type="text"
+              class="form-control"
+              id="qno"
+              placeholder="Question No."
+              name="qno"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="question">Paste Question here:</label>
+          <textarea
+            class="form-control"
+            rows="7"
+            id="question"
+            placeholder="Question"
+            name="question"
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-primary m-2"></input>
+        <input type="reset" class="btn btn-warning m-2"></input>
+        </div>
+        
+      </form>
+    </div>
+    <footer><%- include ./footer %></footer>
+  </body>
+</html>

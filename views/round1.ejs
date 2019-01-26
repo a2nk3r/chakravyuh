@@ -1,18 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <%- include ./head %>
+  <head>
+    <%- include ./head %>
+    <link rel="stylesheet" href="/css/flipclock.css" />
+    <script src="/scripts/flipclock.js"></script>
+  </head>
   <body>
     <header><%- include ./header %></header>
     <div class="container-fluid">
       <div class="jumbotron row">
-        <div class="col-sm-6">
-          <h1>
-            Welcome<br />to<br />Chakravyuh <br />
-            <em>Round <%= round %></em>
-          </h1>
+        <div class="col-sm-4">
+          <div class="clock" style="margin:2em;"></div>
+          <div class="message"></div>
+          <script type="text/javascript">
+            var clock;
+            const duration = 20;
+            $(document).ready(function() {
+              clock = $(".clock").FlipClock(duration, {
+                clockFace: "MinuteCounter",
+                countdown: true,
+                callbacks: {
+                  stop: function() {
+                    $(".message").html("The clock has stopped!");
+                  }
+                }
+              });
+            });
+            setTimeout(() => {
+              // after 2 seconds
+              window.location = "/";
+            }, (duration + 1) * 1000);
+          </script>
         </div>
-        <div class="col-sm-6">
-          <img src="https://picsum.photos/600/400?random" alt="" />
+        <div class="col-sm-8">
+          <img src="https://picsum.photos/800/400?random" alt="" />
         </div>
       </div>
     </div>
