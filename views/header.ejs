@@ -19,7 +19,9 @@
           >Home <span class="sr-only">(current)</span></a
         >
       </li>
-      <li class="nav-item"><a class="nav-link" href="/carousel">Carousel</a></li>
+      <li class="nav-item">
+        <a class="nav-link" href="/carousel">Carousel</a>
+      </li>
       <li class="nav-item dropdown">
         <a
           class="nav-link dropdown-toggle"
@@ -35,8 +37,11 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <!-- <a class="dropdown-item" href="#">Action</a>
             <a class="dropdown-item" href="#">Another action</a> -->
-          <% for (let value of rounds){ %>
-          <a class="dropdown-item text-capitalize" href=<%= value %>><%= value %></a> <% } %>
+          <% for (let i = 1;i <= 5;i++){ %>
+          <a class="dropdown-item text-capitalize" href="/round/<%= i %>"
+            >Round <%= i %></a
+          >
+          <% } %>
 
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="/thankyou">Thank you!</a>
@@ -44,11 +49,15 @@
       </li>
       <li class="nav-item"><a class="nav-link" href="/form">Form</a></li>
       <li class="nav-item">
+        <a class="nav-link" href="/scoreupdate">Update score</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input
+      <a class="nav-link" href="/scoreboard">Scoreboard</a>
+      <!-- <input
         class="form-control mr-sm-2"
         type="search"
         placeholder="Search"
@@ -56,7 +65,7 @@
       />
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
         Search
-      </button>
+      </button> -->
     </form>
   </div>
 </nav>
