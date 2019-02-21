@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ./head %>
+    <title>Document</title>
+    <style>
+      body {
+        background-color: lightblue;
+      }
+      input[type="text"] {
+        padding: 20px 10px;
+        text-align: center;
+        display: block;
+        font-size: 75px;
+        height: 120px;
+        background-color: bisque;
+      }
+    </style>
+  </head>
+  <body>
+    <header><%- include ./header %></header>
+    <div class="container-fluid">
+      <form action="/feed/score" method="post">
+        <div class="row">
+          <div class="col-auto my-1 form-group col-md-2">
+            <label class="mr-sm-2" for="inlineFormCustomSelect">Round</label>
+            <select
+              class="custom-select mr-sm-2"
+              id="inlineFormCustomSelect"
+              name="round"
+            >
+              <option selected>Choose...</option>
+              <option value="1">Round 1</option>
+              <option value="2">Round 2</option>
+              <option value="3">Round 3</option>
+              <option value="4">Round 4</option>
+              <option value="5">Round 5</option>
+            </select>
+          </div>
+        </div>
+        <br /><br />
+        <div class="row">
+          <div class="col">
+            <label for="qno"> Team A : </label>
+            <input
+              type="text"
+              class="form-control"
+              id="qno"
+              placeholder="A"
+              name="teama"
+            />
+          </div>
+          <div class="col">
+            <label for="qno">Team B : </label>
+            <input
+              type="text"
+              class="form-control"
+              id="qno"
+              placeholder="B"
+              name="teamb"
+            />
+          </div>
+          <div class="col">
+            <label for="qno">Team C : </label>
+            <input
+              type="text"
+              class="form-control"
+              id="qno"
+              placeholder="C"
+              name="teamc"
+            />
+          </div>
+          <div class="col">
+            <label for="qno"> Team D : </label>
+            <input
+              type="text"
+              class="form-control"
+              id="qno"
+              placeholder="D"
+              name="teamd"
+            />
+          </div>
+          <div class="col">
+            <label for="qno">Team E : </label>
+            <input
+              type="text"
+              class="form-control"
+              id="qno"
+              placeholder="E"
+              name="teame"
+            />
+          </div>
+          <div class="col">
+            <label for="qno">Team F : </label>
+            <input
+              type="text"
+              class="form-control"
+              id="qno"
+              placeholder="F"
+              name="teamf"
+            />
+          </div>
+        </div>
+        <br /><br />
+        <div class="form-group" align="center">
+          <input type="submit" class="btn btn-primary m-2" />
+          <input type="reset" class="btn btn-warning m-2" />
+        </div>
+      </form>
+    </div>
+    <footer><%- include ./footer %></footer>
+  </body>
+</html>
