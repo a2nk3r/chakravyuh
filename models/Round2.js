@@ -5,7 +5,11 @@ module.exports = mongoose.model(
   "round2",
   new Schema({
     id: Number,
-    question: String,
-    seen: Boolean
+    slot: String,
+    over: Boolean,
+    ques1: String,
+    seen1: Boolean,
+    ques2: String,
+    seen2: Boolean
   })
 );

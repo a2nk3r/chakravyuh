@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ./head %>
+    <link rel="stylesheet" href="/css/flipclock.css" />
+    <script src="/scripts/flipclock.js"></script>
+    <style>
+      body {
+        background-color: gainsboro;
+      }
+      h2 {
+        text-align: center;
+      }
+      img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        height: 200px;
+        width: 200px;
+      }
+      .cards {
+        align-content: center;
+      }
+      .cards:hover {
+        background-color: ghostwhite;
+      }
+    </style>
+  </head>
+  <body>
+    <header><%- include ./header %></header>
+    <div class="container-fluid">
+      <br />
+      <br />
+      <div class="row">
+        <% for(let i = 0;i < slots.length;i++) { %>
+        <div class="col" style="border-right: 1px solid #ccc">
+          <div class="cards m-3">
+            <h2><%= slots[i].slot %></h2>
+            <hr />
+            <a href="/round/2/chosen/<%= slots[i].id %>"
+              ><img
+                src="/img/<%= slots[i].slot.split(' ').join('').toLowerCase() %>.png"
+                alt=""
+            /></a>
+          </div>
+        </div>
+        <% } %>
+      </div>
+    </div>
+    <footer><%- include ./footer %></footer>
+  </body>
+</html>
