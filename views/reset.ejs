@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ./head %>
+    <link rel="stylesheet" href="/css/flipclock.css" />
+    <script src="/scripts/flipclock.js"></script>
+    <style>
+      body {
+        background-color: darkkhaki;
+      }
+      input[type="checkbox"] {
+        zoom: 5;
+        margin-right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header><%- include ./header %></header>
+    <div class="container-fluid">
+      <div class="jumbotron">
+        <form action="/reset" method="POST">
+          <div class="row">
+            <% for(let i = 1;i <= 5;i++) { %>
+            <div class="col" style="border-right: 1px solid #ccc">
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id=`r<%= i %>`
+                />
+              </div>
+              <br />
+              <br />
+              <br />
+              <br />
+              <h3>Round <%= i %></h3>
+            </div>
+            <% } %>
+            <div class="col">
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="score" />
+              </div>
+              <br />
+              <br />
+              <br />
+              <br />
+              <h3>Score</h3>
+            </div>
+          </div>
+          <br />
+          <br />
+          <div class="row">
+            <button type="submit" class="btn m-3 btn-primary">Reset</button>
+            <button type="reset" class="btn m-3 btn-warning">Clear</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <footer><%- include ./footer %></footer>
+  </body>
+</html>

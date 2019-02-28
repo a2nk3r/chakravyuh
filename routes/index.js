@@ -6,16 +6,19 @@ router.get("/", (req, res) => {
   res.render("home");
 });
 
-router.get("/carousel", (req, res) => {
-  res.render("carousel");
+router.get("/scoreupdate", (req, res) => {
+  res.render("scoreupdate");
 });
 
+router.get("/reset", (req, res) => {
+  res.render("reset");
+});
 router.get("/form", (req, res) => {
   res.render("form");
 });
 
-router.get("/scoreupdate", (req, res) => {
-  res.render("scoreupdate");
+router.get("/form2", (req, res) => {
+  res.render("form2");
 });
 router.get("/scoreboard", (req, res) => {
   Score.find({}, (err, scores) => {

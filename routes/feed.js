@@ -73,6 +73,27 @@ router.post("/round", (req, res, next) => {
   res.send(req.body);
 });
 
+router.post("/round2", (req, res, next) => {
+  let { slot, ques1, ques2 } = req.body;
+  const slots = ["Algebra", "Sequences", "Probability", "P n C", "Geometry"];
+  let ques = new Round2({
+    id: slot,
+    slot: "",
+    over: false,
+    ques1: ques1,
+    seen1: false,
+    ques2: ques2,
+    seen2: false
+  });
+  ques.save(err => {
+    if (err) {
+      console.log("couldn't save!");
+    } else {
+      console.log("saved successfully...");
+    }
+  });
+});
+
 router.post("/score", (req, res, next) => {
   const { round, teama, teamb, teamc, teamd, teame, teamf } = req.body;
   Score.findOneAndReplace(

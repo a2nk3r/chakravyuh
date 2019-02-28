@@ -24,4 +24,90 @@ router.get("/score", (req, res, next) => {
   );
 });
 
+router.get("/round1", (req, res, next) => {
+  Round1.update(
+    {},
+    {
+      seen: false
+    },
+    { multi: true },
+    (err, records) => {
+      if (err) {
+        res.json({ error: err });
+      } else {
+        res.json({ records: records });
+      }
+    }
+  );
+});
+
+router.get("/round2", (req, res, next) => {
+  Round2.update(
+    {},
+    {
+      over: false,
+      seen1: false,
+      seen2: false
+    },
+    { multi: true },
+    (err, records) => {
+      if (err) {
+        res.json({ error: err });
+      } else {
+        res.json({ records: records });
+      }
+    }
+  );
+});
+
+router.get("/round3", (req, res, next) => {
+  Round3.update(
+    {},
+    {
+      seen: false
+    },
+    { multi: true },
+    (err, records) => {
+      if (err) {
+        res.json({ error: err });
+      } else {
+        res.json({ records: records });
+      }
+    }
+  );
+});
+
+router.get("/round4", (req, res, next) => {
+  Round4.update(
+    {},
+    {
+      seen: false
+    },
+    { multi: true },
+    (err, records) => {
+      if (err) {
+        res.json({ error: err });
+      } else {
+        res.json({ records: records });
+      }
+    }
+  );
+});
+
+router.get("/round5", (req, res, next) => {
+  Round5.update(
+    {},
+    {
+      seen: false
+    },
+    { multi: true },
+    (err, records) => {
+      if (err) {
+        res.json({ error: err });
+      } else {
+        res.json({ records: records });
+      }
+    }
+  );
+});
 module.exports = router;
