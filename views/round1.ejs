@@ -39,16 +39,20 @@
             <li>Rule2</li>
             <li>Rule3</li>
           </ul>
-          <form action="/round/1/ques">
-            <input type="submit" value="Start" class="btn btn-primary m-5" />
-          </form>
+          <a href="/round/1/ques">
+            <img src="/img/start.svg" alt="" height="120px" width="auto" />
+          </a>
         </div>
 
         <% } else { %>
         <div class="col-md-8" style="height:500px;border-right: 1px solid #ccc">
+          <% if(timeroff == 1) { %>
+          <img src="/img/over.png" alt="" height="450px" width="auto" />
+          <% } else { %>
           <p>
             <%= question %>
           </p>
+          <% }%>
         </div>
 
         <div class="col-md-4">
