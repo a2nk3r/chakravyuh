@@ -46,28 +46,39 @@ router.get("/1/ques", (req, res) => {
 // round 2
 
 router.get("/2/choose", (req, res) => {
+  var over = [{ id: 0, slot: "No slot remaining" }];
   Round2.find({ over: false }, (err, slots) => {
-    if (err) {
-    } else {
+    if (slots.length) {
       res.render("choose", { slots: slots });
+    } else {
+      res.render("choose", { slots: over });
     }
   });
 });
 router.get("/2/chosen/:id", (req, res) => {
   let id = req.params.id;
-  let seen1;
-  let seen2;
+  var seen1;
+  var seen2;
   Round2.find({ id: id, over: false }, (err, ques) => {
-    seen1 = ques[0].seen1;
-    seen2 = ques[0].seen2;
-    if (err) {
+    if (!ques.length) {
+      Round2.find({ over: false }, (err, slots) => {
+        if (err) {
+        } else {
+          res.redirect("/round/2/choose");
+        }
+      });
     } else {
-      if (ques[0].seen1) {
-        seen2 = true;
-        res.render("chosen", { question: ques[0].ques2 });
+      seen1 = ques[0].seen1;
+      seen2 = ques[0].seen2;
+      if (err) {
       } else {
-        seen1 = true;
-        res.render("chosen", { question: ques[0].ques1 });
+        if (ques[0].seen1) {
+          seen2 = true;
+          res.render("chosen", { question: ques[0].ques2 });
+        } else {
+          seen1 = true;
+          res.render("chosen", { question: ques[0].ques1 });
+        }
       }
       if (seen1) {
         Round2.findOneAndUpdate(

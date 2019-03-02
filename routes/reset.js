@@ -3,7 +3,7 @@ var express = require("express");
 var router = express.Router();
 
 router.get("/score", (req, res, next) => {
-  Score.update(
+  Score.updateMany(
     {},
     {
       teama: 0,
@@ -13,7 +13,7 @@ router.get("/score", (req, res, next) => {
       teame: 0,
       teamf: 0
     },
-    { multi: true },
+
     (err, scores) => {
       if (err) {
         res.json({ success: false });
@@ -25,12 +25,12 @@ router.get("/score", (req, res, next) => {
 });
 
 router.get("/round1", (req, res, next) => {
-  Round1.update(
+  Round1.updateMany(
     {},
     {
       seen: false
     },
-    { multi: true },
+
     (err, records) => {
       if (err) {
         res.json({ error: err });
@@ -42,14 +42,14 @@ router.get("/round1", (req, res, next) => {
 });
 
 router.get("/round2", (req, res, next) => {
-  Round2.update(
+  Round2.updateMany(
     {},
     {
       over: false,
       seen1: false,
       seen2: false
     },
-    { multi: true },
+
     (err, records) => {
       if (err) {
         res.json({ error: err });
@@ -61,12 +61,12 @@ router.get("/round2", (req, res, next) => {
 });
 
 router.get("/round3", (req, res, next) => {
-  Round3.update(
+  Round3.updateMany(
     {},
     {
       seen: false
     },
-    { multi: true },
+
     (err, records) => {
       if (err) {
         res.json({ error: err });
@@ -78,12 +78,12 @@ router.get("/round3", (req, res, next) => {
 });
 
 router.get("/round4", (req, res, next) => {
-  Round4.update(
+  Round4.updateMany(
     {},
     {
       seen: false
     },
-    { multi: true },
+
     (err, records) => {
       if (err) {
         res.json({ error: err });
@@ -95,12 +95,12 @@ router.get("/round4", (req, res, next) => {
 });
 
 router.get("/round5", (req, res, next) => {
-  Round5.update(
+  Round5.updateMany(
     {},
     {
       seen: false
     },
-    { multi: true },
+
     (err, records) => {
       if (err) {
         res.json({ error: err });
@@ -109,5 +109,105 @@ router.get("/round5", (req, res, next) => {
       }
     }
   );
+});
+
+router.get("/all", (req, res, next) => {
+  var success = false;
+  Score.updateMany(
+    {},
+    {
+      teama: 0,
+      teamb: 0,
+      teamc: 0,
+      teamd: 0,
+      teame: 0,
+      teamf: 0
+    },
+
+    (err, scores) => {
+      if (err) {
+        success = false;
+      } else {
+        success = true;
+      }
+    }
+  );
+  Round1.updateMany(
+    {},
+    {
+      seen: false
+    },
+
+    (err, records) => {
+      if (err) {
+        success = false;
+      } else {
+        success = true;
+      }
+    }
+  );
+  Round2.updateMany(
+    {},
+    {
+      over: false,
+      seen1: false,
+      seen2: false
+    },
+
+    (err, records) => {
+      if (err) {
+        success = false;
+      } else {
+        success = true;
+      }
+    }
+  );
+  Round3.updateMany(
+    {},
+    {
+      seen: false
+    },
+
+    (err, records) => {
+      if (err) {
+        success = false;
+      } else {
+        success = true;
+      }
+    }
+  );
+  Round4.updateMany(
+    {},
+    {
+      seen: false
+    },
+
+    (err, records) => {
+      if (err) {
+        success = false;
+      } else {
+        success = true;
+      }
+    }
+  );
+  Round5.updateMany(
+    {},
+    {
+      seen: false
+    },
+
+    (err, records) => {
+      if (err) {
+        success = false;
+      } else {
+        success = true;
+      }
+    }
+  );
+  if (success) {
+    res.json({ success: true });
+  } else {
+    res.json({ success: false });
+  }
 });
 module.exports = router;
