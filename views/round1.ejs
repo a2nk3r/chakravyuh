@@ -8,6 +8,15 @@
       body {
         background-color: darkkhaki;
       }
+      img {
+        max-width: 100%;
+        max-height: auto;
+      }
+      .clock {
+        margin-top: 20%;
+        max-width: 100%;
+        max-height: auto;
+      }
     </style>
   </head>
   <body>
@@ -19,7 +28,7 @@
     <div class="container-fluid">
       <div class="jumbotron row">
         <% if (root) { %>
-        <div class="col" style="border-right: 1px solid #ccc">
+        <div class="col-sm" style="border-right: 1px solid #ccc">
           <h1>
             Round <br />
             name <br />
@@ -28,11 +37,11 @@
             here...
           </h1>
         </div>
-        <div class="col" style="border-right: 1px solid #ccc">
+        <div class="col-sm" style="border-right: 1px solid #ccc">
           <img src="https://picsum.photos/400?random" alt="" />
         </div>
 
-        <div class="col">
+        <div class="col-sm">
           <h3>Rules</h3>
           <ul>
             <li>Rule1</li>
@@ -47,7 +56,7 @@
         <% } else { %>
         <div class="col-md-8" style="height:500px;border-right: 1px solid #ccc">
           <% if(timeroff == 1) { %>
-          <img src="/img/over.png" alt="" height="450px" width="auto" />
+          <img src="/img/over.png" alt="" />
           <% } else { %>
           <p>
             <%= question %>
@@ -56,7 +65,7 @@
         </div>
 
         <div class="col-md-4">
-          <div class="clock" style="margin-top:20%;"></div>
+          <div class="clock"></div>
           <div class="message"></div>
           <script type="text/javascript">
             var clock;

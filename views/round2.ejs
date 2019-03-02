@@ -8,13 +8,18 @@
       body {
         background-color: darkkhaki;
       }
+      img {
+        max-width: 100%;
+        max-height: auto;
+      }
     </style>
   </head>
   <body>
     <header><%- include ./header %></header>
+
     <div class="container-fluid">
       <div class="jumbotron row">
-        <div class="col" style="border-right: 1px solid #ccc">
+        <div class="col-sm" style="border-right: 1px solid #ccc">
           <h1>
             Round <br />
             name <br />
@@ -23,11 +28,11 @@
             here...
           </h1>
         </div>
-        <div class="col" style="border-right: 1px solid #ccc">
+        <div class="col-sm" style="border-right: 1px solid #ccc">
           <img src="https://picsum.photos/400?random" alt="" />
         </div>
 
-        <div class="col">
+        <div class="col-sm">
           <h3>Rules</h3>
           <ul>
             <li>Rule1</li>

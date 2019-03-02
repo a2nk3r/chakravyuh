@@ -12,6 +12,9 @@
   </head>
   <body>
     <header><%- include ./header %></header>
+    <audio id="myAudio">
+      <source src="/audio/buzzer.mp3" type="audio/mpeg" />
+    </audio>
     <div class="container-fluid">
       <div class="jumbotron row">
         <div class="col-md-8" style="height:500px;border-right: 1px solid #ccc">
@@ -25,6 +28,7 @@
           <div class="message"></div>
           <script type="text/javascript">
             var clock;
+            var x = document.getElementById("myAudio");
             const duration = 10;
             $(document).ready(function() {
               clock = $(".clock").FlipClock(duration, {
@@ -33,6 +37,13 @@
                 callbacks: {
                   stop: function() {
                     $(".message").html("The clock has stopped!");
+                  },
+                  interval: function() {
+                    var time = this.factory.getTime().time;
+                    if (time === 3) {
+                      playAudio();
+                      console.log("time = ", time);
+                    }
                   }
                 }
               });
@@ -40,6 +51,12 @@
             window.setInterval(() => {
               window.location.href = `/round/2/choose`;
             }, (duration + 1) * 1000);
+            function playAudio() {
+              x.play();
+            }
+            function pauseAudio() {
+              x.pause();
+            }
           </script>
         </div>
       </div>
