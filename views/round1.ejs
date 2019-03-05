@@ -12,33 +12,23 @@
         max-width: 100%;
         max-height: auto;
       }
-      .clock {
-        margin-top: 20%;
-        max-width: 100%;
-        max-height: auto;
-      }
     </style>
   </head>
   <body>
     <header><%- include ./header %></header>
-    <audio id="myAudio">
-      <source src="/audio/buzzer.mp3" type="audio/mpeg" />
-    </audio>
 
     <div class="container-fluid">
-      <div class="jumbotron row">
-        <% if (root) { %>
+      <div class="jumbotron row" style="margin-top:10%">
         <div class="col-sm" style="border-right: 1px solid #ccc">
-          <h1>
-            Round <br />
-            name <br />
-            to be <br />
-            displayed <br />
-            here...
+          <h1 class="hindi">
+            आ <br />
+            देखें <br />
+            ज़रा... <br />
+            (Challenging round) <br />
           </h1>
         </div>
         <div class="col-sm" style="border-right: 1px solid #ccc">
-          <img src="https://picsum.photos/400?random" alt="" />
+          <img src="/img/challenging.jpg" alt="" />
         </div>
 
         <div class="col-sm">
@@ -48,65 +38,11 @@
             <li>Rule2</li>
             <li>Rule3</li>
           </ul>
-          <a href="/round/1/ques">
+
+          <a href="/round/1/choose">
             <img src="/img/start.svg" alt="" height="120px" width="auto" />
           </a>
         </div>
-
-        <% } else { %>
-        <div class="col-md-8" style="height:500px;border-right: 1px solid #ccc">
-          <% if(timeroff == 1) { %>
-          <img src="/img/over.png" alt="" />
-          <% } else { %>
-          <p>
-            <%= question %>
-          </p>
-          <% }%>
-        </div>
-
-        <div class="col-md-4">
-          <div class="clock"></div>
-          <div class="message"></div>
-          <script type="text/javascript">
-            var clock;
-            var x = document.getElementById("myAudio");
-            let timeroff = `<%= timeroff %>`;
-            const duration = 10;
-            if (timeroff == 1) {
-              duration = 0;
-            } else {
-              $(document).ready(function() {
-                clock = $(".clock").FlipClock(duration, {
-                  clockFace: "MinuteCounter",
-                  countdown: true,
-                  callbacks: {
-                    stop: function() {
-                      $(".message").html("The clock has stopped!");
-                    },
-                    interval: function() {
-                      var time = this.factory.getTime().time;
-                      if (time === 3) {
-                        playAudio();
-                        console.log("time = ", time);
-                      }
-                    }
-                  }
-                });
-              });
-              window.setInterval(() => {
-                window.location.href = `/round/1`;
-              }, (duration + 1) * 1000);
-            }
-
-            function playAudio() {
-              x.play();
-            }
-            function pauseAudio() {
-              x.pause();
-            }
-          </script>
-        </div>
-        <% } %>
       </div>
     </div>
     <footer><%- include ./footer %></footer>

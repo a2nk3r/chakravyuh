@@ -4,24 +4,40 @@
     <%- include ./head %>
 
     <!-- <script src="/scripts/typedjs.js"></script> -->
+
     <title>Chakravyuh</title>
     <style>
+      body {
+        background-image: url(/img/chakravyuh.jpg);
+      }
       img {
         max-width: 100%;
         max-height: auto;
+      }
+      .big {
+        font-size: 100px;
+        color: purple;
+      }
+      .welcome {
+        margin-top: 15%;
       }
     </style>
   </head>
   <body>
     <header><%- include ./header %></header>
+
     <div class="container-fluid">
-      <div class="jumbotron row">
-        <div class="col-sm-6">
-          <h1>Welcome<br />to<br />Chakravyuh!</h1>
-        </div>
-        <div class="col-sm-6">
-          <img src="https://picsum.photos/600/400?random" alt="" />
-        </div>
+      <div class="welcome">
+        <h1 class="hindi-title big" align="center">
+          <span class="typed"></span>
+        </h1>
+        <script>
+          new TypeIt(".typed", {
+            strings: ["चक्रव्यूह में आपका स्वागत है!"],
+            loop: true
+            //-- Other options...
+          }).go();
+        </script>
       </div>
     </div>
 

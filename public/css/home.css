@@ -1,7 +1,6 @@
-@import url("https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe");
+@import url("https://fonts.googleapis.com/css?family=ZCOOL+KuaiLe|Palanquin|Rozha+One");
 body {
   /* The image used */
-  background-image: url("/img/chakravyuh.jpg");
 
   /* Full height */
 
@@ -10,6 +9,12 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   font-family: "ZCOOL KuaiLe";
+}
+.hindi {
+  font-family: Palanquin;
+}
+.hindi-title {
+  font-family: "Rozha One";
 }
 .footer {
   position: fixed;

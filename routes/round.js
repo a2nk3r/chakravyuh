@@ -9,43 +9,7 @@ router.get("/:round", (req, res) => {
 
 // round 1
 
-router.get("/1/ques", (req, res) => {
-  let round = 1;
-  let qno;
-  Round1.find({ seen: false }, (err, ques) => {
-    if (err) {
-    } else {
-      if (ques.length) {
-        qno = ques[0].id;
-        res.render("round" + round, {
-          root: false,
-          question: ques[0].question,
-          timeroff: 0
-        });
-        Round1.findOneAndUpdate(
-          { id: qno },
-          { seen: true },
-          (err, affected, resp) => {
-            if (err) {
-              console.log("error in updating");
-            } else {
-            }
-          }
-        );
-      } else {
-        res.render("round" + round, {
-          root: false,
-          question: "Round over!",
-          timeroff: 1
-        });
-      }
-    }
-  });
-});
-
-// round 2
-
-router.get("/2/choose", (req, res) => {
+router.get("/1/choose", (req, res) => {
   var over = [{ id: 0, slot: "No slot remaining" }];
   Round2.find({ over: false }, (err, slots) => {
     if (slots.length) {
@@ -55,7 +19,7 @@ router.get("/2/choose", (req, res) => {
     }
   });
 });
-router.get("/2/chosen/:id", (req, res) => {
+router.get("/1/chosen/:id", (req, res) => {
   let id = req.params.id;
   var seen1;
   var seen2;
@@ -64,7 +28,7 @@ router.get("/2/chosen/:id", (req, res) => {
       Round2.find({ over: false }, (err, slots) => {
         if (err) {
         } else {
-          res.redirect("/round/2/choose");
+          res.redirect("/round/1/choose");
         }
       });
     } else {
@@ -115,6 +79,42 @@ router.get("/2/chosen/:id", (req, res) => {
             }
           }
         );
+      }
+    }
+  });
+});
+
+// round 2
+
+router.get("/2/ques", (req, res) => {
+  let round = 2;
+  let qno;
+  Round1.find({ seen: false }, (err, ques) => {
+    if (err) {
+    } else {
+      if (ques.length) {
+        qno = ques[0].id;
+        res.render("round" + round, {
+          root: false,
+          question: ques[0].question,
+          timeroff: 0
+        });
+        Round1.findOneAndUpdate(
+          { id: qno },
+          { seen: true },
+          (err, affected, resp) => {
+            if (err) {
+              console.log("error in updating");
+            } else {
+            }
+          }
+        );
+      } else {
+        res.render("round" + round, {
+          root: false,
+          question: "Round over!",
+          timeroff: 1
+        });
       }
     }
   });

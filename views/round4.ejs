@@ -20,19 +20,18 @@
       <source src="/audio/buzzer.mp3" type="audio/mpeg" />
     </audio>
     <div class="container-fluid">
-      <div class="jumbotron row">
-        <% if (root) { %>
+      <% if (root) { %>
+      <div class="jumbotron row" style="margin-top:5%">
         <div class="col-sm" style="border-right: 1px solid #ccc">
-          <h1>
-            Round <br />
-            name <br />
-            to be <br />
-            displayed <br />
-            here...
+          <h1 class="hindi">
+            दुर्घटना<br />
+            से<br />
+            देर<br />
+            भली <br />
           </h1>
         </div>
         <div class="col-sm" style="border-right: 1px solid #ccc">
-          <img src="https://picsum.photos/400?random" alt="" />
+          <img src="/img/durghatna.jpg" alt="" />
         </div>
 
         <div class="col-sm">
@@ -46,8 +45,9 @@
             <img src="/img/start.svg" alt="" height="120px" width="auto" />
           </a>
         </div>
-
-        <% } else { %>
+      </div>
+      <% } else { %>
+      <div class="jumbotron row">
         <div class="col-md-8" style="height:500px;border-right: 1px solid #ccc">
           <% if(timeroff == 1) { %>
           <img src="/img/over.png" alt="" />
@@ -81,7 +81,10 @@
                     },
                     interval: function() {
                       var time = this.factory.getTime().time;
-                      if (time === 3) {
+                      if (
+                        time === 3 ||
+                        (time !== 0 && time !== 300 && time % 60 === 0)
+                      ) {
                         playAudio();
                         console.log("time = ", time);
                       }
@@ -101,8 +104,8 @@
             }
           </script>
         </div>
-        <% } %>
       </div>
+      <% } %>
     </div>
     <footer><%- include ./footer %></footer>
   </body>
